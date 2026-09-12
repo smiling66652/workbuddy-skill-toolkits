@@ -4,17 +4,43 @@ name: 二级：YouTube 转录
 
 # 二级：YouTube 转录
 
-**适用场景**：用户需要获取YouTube视频内容、提取字幕、无需看视频获取信息
+**适用场景**：用户需要获取 YouTube 视频内容、提取字幕、无需看视频获取信息
+
+---
+
+> ⚠️ **两个前置条件，先确认再动手**
+>
+> 1. **本机两个工具都没装**：`youtube-transcript-api` 和 `yt-dlp` 实测均缺失。
+>    装法：`venv_python -m pip install youtube-transcript-api yt-dlp -i https://pypi.tuna.tsinghua.edu.cn/simple`
+> 2. **YouTube 在本机网络需要代理**。命令行工具不会自动走代理，要显式指定：
+>    ```bash
+>    yt-dlp --proxy socks5://127.0.0.1:10808 --write-auto-sub --skip-download "<URL>"
+>    ```
 
 ---
 
 ## 工具对比
 
-| 工具 | 速度 | 准确率 | 费用 | 推荐场景 |
-|------|------|--------|------|------------|
-| **youtube-transcript-api** | 快 | 高 | 免费 | 获取字幕文本 |
-| **yt-dlp** | 中 | 高 | 免费 | 下载字幕文件 |
-| **Whisper API** | 慢 | 非常高 | 按量付费 | 无字幕视频 |
+| 工具 | 速度 | 准确率 | 费用 | 状态 |
+|------|------|--------|------|------|
+| **youtube-transcript-api** | 快 | 高 | 免费 | ❌ 未装 |
+| **yt-dlp** | 中 | 高 | 免费 | ❌ 未装 |
+| **CDP 直连**（不走 API） | 中 | 高 | 免费 | ✅ **可用**，见下 |
+| Whisper API | 慢 | 非常高 | 按量付费 | ❌ 需 `OPENAI_API_KEY` |
+
+## 兜底：CDP 直连（本机当下就能用）
+
+不想装包、或字幕 API 被限流时，用你日常浏览器的登录态直接读转录面板：
+
+```bash
+node "C:/Users/Matebook/.workbuddy/skills/联网工具箱/scripts/check-deps.mjs"
+curl -s -X POST --data-raw 'https://www.youtube.com/watch?v=<ID>' http://localhost:3456/new
+# 展开「显示转录文字」，再用 eval 提取全部字幕行
+curl -s -X POST "http://localhost:3456/eval?target=ID" -d '[...document.querySelectorAll("ytd-transcript-segment-renderer")].map(e=>e.innerText).join("\n")'
+curl -s "http://localhost:3456/close?target=ID"
+```
+
+这条路依赖你的浏览器能访问 YouTube（有代理就行），**不需要 pip 安装任何东西**。
 
 ---
 

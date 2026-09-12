@@ -1,0 +1,21 @@
+# 依赖（用 npm install 复原，不要入库）
+node_modules/
+
+# playwright-cli 运行时产物
+.playwright-cli/
+
+# 用户偏好（机器相关，不入库；模板在 templates/config.env.template）
+config.env
+
+# 临时探测文件与隔离目录
+_trash_*/
+_*.html
+_*.json
+!package.json
+!package-lock.json
+*.log
+
+# 系统
+.DS_Store
+Thumbs.db
+desktop.ini
