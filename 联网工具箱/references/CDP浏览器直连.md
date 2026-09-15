@@ -107,6 +107,49 @@ curl -s "http://localhost:3456/close?target=ID"
 
 ---
 
+## 沙箱 / 隔离环境启动浏览器（专属坑）
+
+> 来源：`sandbox-browser-cdp` 技能已于 2026-09-15 并入本技能。其沙箱专属踩坑记录集中保留在此，避免淹没在通用路由手册里。
+
+绝大多数场景直接连**本机正在运行的浏览器**（「前置检查」里的 `chrome://inspect` 开关）即可。但当你**必须新拉起一个隔离浏览器实例**时——沙箱阻断回环、需要干净 profile、或用户日常浏览器占着 9222——走下面的「后台保活」启动法。
+
+### 为什么必须后台保活
+
+工具（Bash / PowerShell）启动的 Edge / Chrome **会在命令结束时被沙箱整体回收子进程树**，表现就是「浏览器秒退、端口一下就没了」。
+
+- **必须在 `run_in_background: true` 下启动**，且命令末尾加 `Start-Sleep 3000` 把父进程钉住：
+
+```powershell
+$dir="C:\Users\<user>\AppData\Local\Temp\edge-cdp-9444"
+if(-not(Test-Path $dir)){ New-Item -ItemType Directory -Path $dir | Out-Null }
+Start-Process -FilePath "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" `
+  -ArgumentList @("--remote-debugging-port=9444","--user-data-dir=$dir","--no-first-run","--no-default-browser-check","--new-window","about:blank")
+Start-Sleep -Seconds 3000     # 关键：保住父进程，否则浏览器被回收
+```
+
+> 启动后，本技能的 `cdp-proxy.mjs` 会通过 `findFallbackPort()` **自动发现这个手动调试端口**，无需改任何配置即可用 `/targets`、`/new`、`/navigate`、`/eval` 等全套 API。
+
+### 验证（必须加 `dangerouslyDisableSandbox: true`）
+
+```bash
+netstat -ano | grep -E "9444.*LISTEN"
+curl -s --noproxy '*' --max-time 8 http://127.0.0.1:9444/json/version
+```
+
+沙箱阻断 loopback，curl 连不上时**加 `dangerouslyDisableSandbox: true`** 即可通（先用 curl 验证，再排查别的）。
+
+### 沙箱专属坑清单
+
+| 现象 | 真因 / 解法 |
+|---|---|
+| 工具启动的 Edge / Chrome 秒退 | 沙箱回收子进程树 → 必须 `run_in_background: true` + 命令末尾 `Start-Sleep 3000` 保活 |
+| Node `fetch` 报 `fetch failed` 但 curl 正常 | 90% 是漏传端口 / 端口无人监听（报错不说明原因）。**CDP 客户端一律用 `node:http` 写，不要用 `fetch`** |
+| 9222 端口返回 404 | 用户日常 Edge 常占着 9222 且它不是有效 DevTools 端点。**换任意空闲端口**（如 9444） |
+| 脚本操作到错误的页面 | 新 profile 仍会带上用户扩展，产生多个 page target。**选 target 必须按 URL 过滤** |
+| `cmd /c` 在 PowerShell 工具里被禁 | 用原生 cmdlet 或 .NET，不要调 `cmd` |
+
+---
+
 ## 本地浏览器资源检索（独有能力）
 
 用户指向**本人访问过的页面**或**组织内部系统**（公网搜不到）时，搜本地书签/历史：

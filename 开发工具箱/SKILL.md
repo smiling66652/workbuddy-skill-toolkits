@@ -1,13 +1,13 @@
 ---
 name: 开发工具箱
 description: >
-  统一开发工具箱（三级层级结构）：
-  一级：分析开发需求（GitHub/代码审查/测试/Flutter/Android/前端/MCP）
-  二级：选择最佳工具（gh CLI/Semgrep/pytest/Flutter CLI/Android Studio/React/Vue/FastMCP）
-  三级：执行指令并返回结果。
-  集成最佳工具：GitHub CLI、Semgrep、pytest、Flutter、React、Vue、FastMCP。
-version: 4.0.0
-author: WorkBuddy 整合版（集成 github/code-review/test-generator/flutter-dev/android-native-dev/frontend-dev/impeccable/mcp-builder）
+  开发工具箱：GitHub 仓库/Issues/PR 管理，代码静态检查（Semgrep/Bandit/pylint），单元测试与集成测试生成，Flutter/Android
+  原生/前端 React-Vue/MCP 服务器开发。集成 gh CLI、Semgrep、pytest、Flutter、React、Vue、FastMCP。
+  触发词：GitHub、Issues、PR、合并请求、CI、跑测试、写单测、生成测试、Flutter、跨平台、Android、Kotlin、Compose、前端、React、Vue、组件、MCP、写代码、构建
+  不用于：代码审查流程（走 工程方法论工具箱，本技能只做工具型静态检查）；安全审查（走 安全审查工具箱）；提交推送（走 git-ship）
+version: 4.1.0
+author: WorkBuddy 整合版（集成
+  github/code-review/test-generator/flutter-dev/android-native-dev/frontend-dev/impeccable/mcp-builder）
 ---
 
 # 开发工具箱
@@ -24,7 +24,7 @@ author: WorkBuddy 整合版（集成 github/code-review/test-generator/flutter-d
 | 用户需求 | 跳转二级 | 推荐工具 |
 |---------|---------|---------|
 | 管理GitHub仓库、Issues、PR | [二级：GitHub操作](references/GitHub操作.md) | `gh` CLI |
-| 审查代码安全/性能 | [二级：代码审查](references/代码审查.md) | Bandit、Semgrep、pylint |
+| 审查代码安全/性能（工具型静态检查） | [二级：静态检查](references/静态检查.md) | Bandit、Semgrep、pylint |
 | 生成单元测试/集成测试/E2E | [二级：测试生成](references/测试生成.md) | pytest、Playwright |
 | 开发Flutter跨平台应用 | [二级：Flutter开发](references/Flutter开发.md) | Flutter SDK + Dart |
 | 开发Android原生应用 | [二级：Android原生](references/Android原生开发.md) | Kotlin + Compose |
@@ -40,7 +40,7 @@ author: WorkBuddy 整合版（集成 github/code-review/test-generator/flutter-d
 | 需求类型 | 触发词示例 | 跳转二级 |
 |------------|------------|------------|
 | GitHub仓库管理 | GitHub、Issues、PR、合并请求、CI、pipeline | [二级：GitHub操作](references/GitHub操作.md) |
-| 代码审查 | 审查代码、code review、这个PR有什么问题 | [二级：代码审查](references/代码审查.md) |
+| 静态检查 | 审查代码、code review、这个PR有什么问题（工具型） | [二级：静态检查](references/静态检查.md) |
 | 测试生成 | 生成测试、写单测、测试覆盖、单元测试 | [二级：测试生成](references/测试生成.md) |
 | Flutter开发 | Flutter、跨平台、Widget、Riverpod | [二级：Flutter开发](references/Flutter开发.md) |
 | Android开发 | Android、Kotlin、Compose、Material3 | [二级：Android原生](references/Android原生开发.md) |
@@ -86,7 +86,7 @@ refactor: 重构用户服务
 | 文件 | 何时读取 |
 |------|------------|
 | `references/GitHub操作.md` | 需要管理GitHub仓库、Issues、PR时 |
-| `references/代码审查.md` | 需要审查代码安全、性能、可维护性时 |
+| `references/静态检查.md` | 需要审查代码安全、性能、可维护性时（工具型） |
 | `references/测试生成.md` | 需要生成单元测试、集成测试、E2E测试时 |
 | `references/Flutter开发.md` | 需要开发Flutter跨平台应用时 |
 | `references/Android原生开发.md` | 需要开发Android原生应用时 |

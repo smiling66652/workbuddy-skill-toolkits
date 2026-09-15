@@ -1,14 +1,13 @@
 ---
 name: 联网工具箱
 description: >
-  所有联网操作的唯一入口。搜索、查资料、查网页、抓取网页、提取正文、浏览器自动化、打开网页、点击、填表、截图、
-  登录后操作、需要登录态的网站、下载文档、文库下载、付费文档、下载教材、找电子书、找 PDF、搜 ISBN、
-  看视频内容、YouTube 转录、最新新闻、每日简报、RSS、
-  遇到反爬、Cloudflare、验证码、403、需要绕过拦截、
-  找回"我之前看过的那个页面"、访问组织内部系统、
-  以及任何需要真实浏览器环境的联网任务。
-  本技能是编排层：先分层判断再分派，底层实现（CDP 直连 / 本地 Playwright / agent-browser / nodriver）
-  全部由本技能统一调用，且实现脚本均已自持在本技能 scripts/ 下，不依赖任何外部技能包。
+  所有联网操作的唯一入口，本技能是编排层：先分层判断再分派，实现脚本（CDP 直连 / 本地 Playwright /
+  nodriver 降级链）均已自持在本技能 scripts/ 下，不依赖任何外部技能包。
+  触发词：搜索、查资料、查网页、抓取网页、提取正文、浏览器自动化、打开网页、点击、填表、截图、登录后操作、
+  需要登录态的网站、下载文档、文库下载、付费文档、下载教材、找电子书、找 PDF、搜 ISBN、看视频内容、
+  YouTube 转录、最新新闻、每日简报、RSS、反爬、Cloudflare、验证码、403、需要绕过拦截、
+  找回"我之前看过的那个页面"、访问组织内部系统、需要真实浏览器环境。
+  不用于：本地文档格式转换（走「文档工具箱」）；代码相关（走「开发工具箱」）。
 version: 6.0.0
 author: WorkBuddy 整合版
 ---
@@ -17,7 +16,7 @@ author: WorkBuddy 整合版
 
 > **任何需要联网的事，都从这一个技能进。**
 > 本技能是**编排层**：负责「判断该走哪一层」+「调用对应实现」。
-> 底层实现（CDP Proxy、本地 Playwright、agent-browser、nodriver）**脚本都在本技能内，不需要你单独加载其它技能**。
+> 底层实现（CDP Proxy、本地 Playwright、nodriver）**脚本都在本技能内，不需要你单独加载其它技能**。
 
 ---
 
@@ -27,8 +26,8 @@ author: WorkBuddy 整合版
 |---|---|
 | 搜索 / 抓网页 / 操作网页 / 下载文档 / 看视频内容 | **只加载本技能** |
 | 文档提到 `scripts/check-deps.mjs` / `cdp-proxy.mjs` | 那是**本技能自带的 CDP Proxy 实现**，直接按文档调用即可 |
-| 文档提到 `agent-browser` / `playwright-cli` / `scripts/pw.mjs` | 那是**降级执行器**，按本技能指引调用命令即可 |
-| 你被直接 `@agent-browser` 唤起 | 仍按本技能的层级决策走，**不要跳层**（例如别在有登录态的情况下先试无头浏览器） |
+| 文档提到 `scripts/pw.mjs` | 那是**降级执行器**（本地 Playwright 1.63.0，走系统 Edge，零安装），按指引调用即可 |
+| 你被其它浏览器类技能直接唤起 | 仍按本技能的层级决策走，**不要跳层**（例如别在有登录态的情况下先试无头浏览器） |
 | 子 Agent 需要联网 | prompt 里写 `必须加载「联网工具箱」skill 并遵循指引` |
 
 **为什么要统一入口**：若干浏览器技能功能高度重叠，且各自文档的历史命令口径不一致
@@ -65,7 +64,7 @@ doctor 会逐层实测「到底能不能用」，并在缺失时给出**正确�
 | **L0 静态层** | WebSearch / WebFetch / curl | 公开内容、URL 已知、无需登录 | [智能搜索](references/智能搜索.md) |
 | **L0.5 预处理层** | WebFetch（内置）→ Jina `r.jina.ai/<url>` | 正文已在 HTML 里的页面，省 token | [智能搜索](references/智能搜索.md) |
 | **L1 CDP 直连**（P0 首选） | 本技能自带 CDP Proxy | 需登录态、静态层失效、需交互 | **[CDP浏览器直连](references/CDP浏览器直连.md)** |
-| **L2 独立浏览器**（降级） | `scripts/pw.mjs` / agent-browser | CDP 不可用时 | [浏览器自动化](references/浏览器自动化.md) |
+| **L2 独立浏览器**（降级） | `scripts/pw.mjs`（本地 Playwright 1.63，走系统 Edge） | CDP 不可用时 | [浏览器自动化](references/浏览器自动化.md) |
 | **L2.5 反爬层** | nodriver / curl_cffi / camoufox | 出现 Cloudflare / Turnstile 时 | [反爬对抗](references/反爬对抗.md) |
 
 **升级判据（最重要的一条）**：目标站点**你已在本机浏览器登录过**
@@ -79,7 +78,7 @@ doctor 会逐层实测「到底能不能用」，并在缺失时给出**正确�
 ```
 要不要登录态？已知静态层被拦？
 ├─ 是 → L1 CDP 直连（P0）
-│        └ Proxy 起不来？ → agent-browser --cdp 9222（同样复用登录态，零重建）
+│        └ Proxy 起不来？ → 先重跑 check-deps；仍不行用 scripts/pw.mjs --persistent（持久 profile）
 └─ 否 ↓
 
 是不是 SPA / JS 渲染，curl 拿不到正文？
@@ -211,7 +210,7 @@ node scripts/match-site.mjs <域名或关键词>   # 按域名/别名匹配已�
 | 优先级 | 方案 | 何时用 |
 |---|---|---|
 | **P0（首选）** | **CDP 直连** | 你**已在该站登录**时。零登录成本、真实浏览器环境 → [CDP浏览器直连](references/CDP浏览器直连.md) |
-| **P0.5** | agent-browser `--cdp 9222` | CDP Proxy 起不来，但仍要复用登录态 |
+| **P0.5** | `scripts/pw.mjs --persistent`（持久 profile 复用登录态） | CDP Proxy 起不来，但仍要复用登录态 |
 | P1 | kill-doc 脚本 | 百度文库/原创力等 30+ 中文文档站，无需登录 |
 | P2 | 复用本机浏览器登录态下载 | CDP 不便于直接下载文件时 → [复用Chrome登录态下载](references/复用Chrome登录态下载.md) |
 | P3 | 有头浏览器 + 手动登录 | 上述都不适用、且本机也未登录 |
@@ -251,7 +250,7 @@ curl -s "http://localhost:3456/close?target=ID"
 
 ```
 CDP 直连真实浏览器（navigator.webdriver 天然 false）
-  → agent-browser --cdp 9222
+  → scripts/pw.mjs --persistent（持久 profile 复用登录态）
   → nodriver（Python ≤3.13，免 WebDriver）
   → curl_cffi（仅 TLS-only 站点）
   → camoufox → 付费方案
@@ -278,7 +277,7 @@ CDP 直连真实浏览器（navigator.webdriver 天然 false）
 | 脚本 | 用途 |
 |---|---|
 | `doctor.mjs` | **环境自检**，输出能力矩阵。`--json` / `--quick` |
-| `pw.mjs` | **本地 playwright-cli 封装（零安装）**。`open <url>` / `snapshot` / `click <ref>` / `eval` / `close`，默认走系统 Edge |
+| `pw.mjs` | **本地 Playwright CLI 封装（零安装）**。`open <url>` / `snapshot` / `click <ref>` / `eval` / `close`，默认走系统 Edge |
 | `rss.mjs` | **零依赖 RSS 阅读器**。`--preset news\|tech\|ai\|dev\|all` / `--url` / `--since 1d` / `--json`；内置**冻结源检测** |
 | `site-patterns-check.mjs` | 站点经验体检：frontmatter 格式、重复域名/别名、陈旧条目 |
 

@@ -1,12 +1,13 @@
 ---
 name: 安全审查工具箱
 description: >
-  统一安全审查工具箱（三级层级结构）： 一级：分析审查需求（Skill安全/第三方Skill/通用安全）
-  二级：选择最佳工具（腾讯云鼎/skill-vetter/skill-scanner） 三级：执行审查并返回结果。
-  集成最佳工具：腾讯云鼎实验室、腾讯朱雀实验室A.I.G、通用第三方Skill安全审查。
-version: 2.0.0
+  安全审查工具箱：安装 Skill 前安全审计、第三方 Skill 审查、通用代码/依赖安全与漏洞扫描。集成
+  腾讯云鼎实验室、腾讯朱雀实验室 A.I.G、skill-vetter/skill-scanner；Skill 安全审计优先使用内置插件
+  skills安全审计（skills-sec-audit），不自带重复实现。
+  触发词：安全审查、这个安全吗、审查这个Skill、安装前检查、第三方Skill、代码安全、依赖安全、漏洞扫描
+  不用于：代码审查/审查代码质量（走 工程方法论工具箱）；静态检查工具用法（走 开发工具箱）
+version: 2.1.0
 author: WorkBuddy 整合版
-disable: true
 ---
 
 # 安全审查工具箱
@@ -22,7 +23,7 @@ disable: true
 
 | 用户需求 | 跳转二级 | 推荐工具 |
 |---------|---------|---------|
-| 安装Skill前安全审计 | [二级：Skill安全审计](references/Skill安全审计.md) | 腾讯云鼎实验室 |
+| 安装Skill前安全审计 | 内置插件 skills安全审计（skills-sec-audit） | 腾讯云鼎实验室权威实现 |
 | 第三方Skill安全审查 | [二级：第三方Skill审查](references/第三方Skill审查.md) | 腾讯朱雀实验室A.I.G |
 | 通用安全审查 | [二级：通用安全审查](references/通用安全审查.md) | skill-vetter/skill-scanner |
 
@@ -34,7 +35,7 @@ disable: true
 
 | 需求类型 | 触发词示例 | 跳转二级 |
 |---------|------------|---------|
-| Skill安全审计 | 安装前检查、Skill安全吗、审查这个Skill | [二级：Skill安全审计](references/Skill安全审计.md) |
+| Skill安全审计 | 安装前检查、Skill安全吗、审查这个Skill | 内置插件 skills安全审计（skills-sec-audit） |
 | 第三方Skill审查 | 第三方Skill、外部Skill安全 | [二级：第三方Skill审查](references/第三方Skill审查.md) |
 | 通用安全审查 | 安全审查、代码安全、依赖安全 | [二级：通用安全审查](references/通用安全审查.md) |
 
@@ -62,6 +63,6 @@ disable: true
 
 | 文件 | 何时读取 |
 |------|------------|
-| `references/Skill安全审计.md` | 需要安装前安全审计时 |
+| 内置插件 `skills安全审计`（skills-sec-audit） | 需要安装前安全审计时（已内置，无需本地 reference） |
 | `references/第三方Skill审查.md` | 需要审查第三方Skill时 |
 | `references/通用安全审查.md` | 需要通用安全审查时 |

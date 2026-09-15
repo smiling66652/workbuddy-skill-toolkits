@@ -1,12 +1,11 @@
 ---
 name: 文档工具箱
 description: >
-  统一文档处理工具箱（三级层级结构）：
-  一级：分析用户需求和文件类型（PDF/Word/Excel/PPT/Markdown）
-  二级：选择最佳工具（MinerU/MarkItDown/pypandoc/docx/pptx/openpyxl）
-  三级：执行指令并返回结果。
-  集成最佳工具：MinerU（PDF→MD表格97%）、MarkItDown、pypandoc、docx、pptx、openpyxl。
-version: 4.0.0
+  文档处理工具箱：处理 PDF/Word/Excel/PPT/Markdown 等文件的读取、编辑、生成与格式转换，集成
+  MinerU（PDF→MD 表格识别 97%）、MarkItDown、pypandoc、docx、pptx、openpyxl。
+  触发词：读这个PDF、提取PDF文字、改PDF、生成PDF、PDF合并、PDF拆分、创建Word、做PPT、创建Excel、表格处理、转Markdown、OCR、docx、xlsx、pptx
+  不用于：图片转可编辑PPT（走 image-to-editable-pptx）；Word/PPT/Excel 的腾讯文档在线协作（走 tencent-docs 系插件）
+version: 4.1.0
 author: WorkBuddy 整合版
 ---
 

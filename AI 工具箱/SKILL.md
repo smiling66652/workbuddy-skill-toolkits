@@ -1,12 +1,12 @@
 ---
 name: AI 工具箱
 description: >
-  统一 AI 模型工具箱（三级层级结构）： 一级：分析用户需求（文生图/语音转文字/自动化研究/模型统计/多模态生成）
-  二级：选择最佳工具（OpenAI/MiniMax/Whisper/autoresearch） 三级：执行指令并返回结果。 集成最佳工具：OpenAI
-  API、MiniMax CLI、Whisper、autoresearch、model-usage。
-version: 3.0.0
+  AI 工具箱：语音转文字（Whisper）、模型用量统计（model-usage）、自动研究优化（autoresearch）、提示词优化。
+  本机当前未安装依赖（mmx/whisper/autoresearch/model-usage 及 OPENAI/MINIMAX 环境变量均缺失），相关能力需先按
+  references 安装；图片/视频/3D 生成请优先用内置 ImageGen/VideoGen。
+  触发词：语音转文字、转录、音频转文字、字幕生成、模型用量、token统计、自动研究、优化提示词
+version: 3.1.0
 author: WorkBuddy 整合版
-disable: true
 ---
 
 # AI 工具箱
@@ -22,11 +22,10 @@ disable: true
 
 | 用户需求 | 跳转二级 | 推荐工具 |
 |---------|---------|---------|
-| 生成图片、画一张 | [二级：文生图](references/文生图.md) | OpenAI DALL-E / MiniMax CLI |
-| 音频转文字、转录 | [二级：语音转文字](references/语音转文字.md) | Whisper API / Whisper 本地 |
-| 自动优化内容、生成变体 | [二级：自动研究优化](references/自动研究.md) | autoresearch |
-| 查看模型用量、token统计 | [二级：模型使用统计](references/模型统计.md) | model-usage (CodexBar) |
-| 生成视频、3D模型 | [二级：多模态生成](references/多模态生成.md) | MiniMax CLI / 多模态API |
+| 音频转文字、转录 | [二级：语音转文字](references/语音转文字.md) | Whisper API / Whisper 本地（本机需先安装） |
+| 自动优化内容、生成变体 | [二级：自动研究优化](references/自动研究.md) | autoresearch（本机需先安装） |
+| 查看模型用量、token统计 | [二级：模型使用统计](references/模型统计.md) | model-usage (CodexBar)（本机需先安装） |
+| 生成图片/视频/3D | 内置 ImageGen / VideoGen | 无需外部依赖，优先使用 |
 
 ---
 
@@ -36,11 +35,10 @@ disable: true
 
 | 需求类型 | 触发词示例 | 跳转二级 |
 |---------|------------|---------|
-| 文生图 | 生成图片、画一张、AI画画、做个logo | [二级：文生图](references/文生图.md) |
 | 语音转文字 | 转文字、语音转文字、转录音频、Whisper | [二级：语音转文字](references/语音转文字.md) |
 | 自动研究 | 自动优化、生成变体、研究这个话题 | [二级：自动研究优化](references/自动研究.md) |
 | 模型统计 | 模型用量、token统计、查看使用量 | [二级：模型使用统计](references/模型统计.md) |
-| 多模态生成 | 生成视频、生成3D、图片特效 | [二级：多模态生成](references/多模态生成.md) |
+| 文生图/视频/3D | 生成图片、生成视频、做3D | 内置 ImageGen / VideoGen（无需本技能） |
 
 ---
 
@@ -54,9 +52,9 @@ disable: true
 
 ### 成本控制
 
-- 文生图按张计费，注意批量生成数量
-- 语音转文字按分钟计费，长音频先切片
-- 多模态生成（视频/3D）按秒/按模型计费
+- 图片/视频/3D 生成请用内置 ImageGen/VideoGen，按平台计费，避免额外外部依赖
+- 语音转文字按分钟计费（Whisper 本地免费，API 按量），长音频先切片
+- 模型用量请通过 model-usage 查询，避免超额
 
 ### 并行策略
 
@@ -69,9 +67,7 @@ disable: true
 
 | 文件 | 何时读取 |
 |------|------------|
-| `references/文生图.md` | 需要生成图片时 |
-| `references/语音转文字.md` | 需要转录音频时 |
-| `references/自动研究.md` | 需要自动优化内容时 |
-| `references/模型统计.md` | 需要查看模型用量时 |
-| `references/多模态生成.md` | 需要生成视频/3D时 |
+| `references/语音转文字.md` | 需要转录音频时（需先安装 Whisper） |
+| `references/自动研究.md` | 需要自动优化内容时（需先安装 autoresearch） |
+| `references/模型统计.md` | 需要查看模型用量时（需先安装 model-usage） |
 | `references/工具对比.md` | 需要选择最佳工具时 |

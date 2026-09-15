@@ -1,9 +1,8 @@
 ---
 name: skill-integrator
 description: >
-  元技能：将多个同类 skills 整合为统一套件的方法论与执行流程。
-  当用户说"整合 skills"、"N合一"、"合并 skills"、"整理 skills"时触发。
-  提供三级层级结构模板、横向对比方法论、最佳工具搜索与集成流程。
+  元技能：将多个同类 skills 整合为统一套件的方法论与执行流程。 当用户说"整合 skills"、"N合一"、"合并 skills"、"整理
+  skills"时触发。 提供三级层级结构模板、横向对比方法论、最佳工具搜索与集成流程。
 version: 1.0.0
 author: WorkBuddy（基于用户工作原则生成）
 agent_created: true

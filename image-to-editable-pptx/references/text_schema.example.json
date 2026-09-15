@@ -1,0 +1,13 @@
+{
+  "_comment": "Schema for image-to-editable-pptx. Coordinates are source-image pixels, origin top-left. color is RGB hex like #06275c. align is left|center|right.",
+  "src_w": 1672,
+  "src_h": 941,
+  "source": "source.png",
+  "logos": ["AL MABANI", "FCC", "Construcción", "AL Gihaz", "T A V", "webuild", "POWERCHINA", "NESMA", "SAMSUNG C&T", "AL AYUNI", "SATCO"],
+  "texts": [
+    {"text": "King Salman International Airport (KSIA), Riyadh", "x": 222, "y": 18,  "w": 1228, "h": 58, "size": 26,  "color": "#06275c", "bold": true,  "align": "center"},
+    {"text": "AL MABANI", "x": 116, "y": 126, "w": 120,  "h": 23, "size": 12,  "color": "#111111", "bold": true,  "align": "left"},
+    {"text": "Consortium / Team:", "x": 30, "y": 171, "w": 130, "h": 18, "size": 7,   "color": "#111111", "bold": true,  "align": "left"},
+    {"text": "FCC-Almabani JV", "x": 177, "y": 171, "w": 126, "h": 18, "size": 7,   "color": "#111111", "bold": false, "align": "left"}
+  ]
+}
