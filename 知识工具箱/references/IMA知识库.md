@@ -27,6 +27,6 @@
 若将来确实需要**绕开 `ima_api.cjs` 包装、直连 IMA OpenAPI**（更脆弱、无错误处理与更新机制，不推荐）：
 
 - 原始 REST 端点：`/api/v1/upload`、`/api/v1/add_url`、`/api/v1/search`（用 Python `requests` 直调）
-- IMA MCP 安装：`npm install -g @ima/mcp-server`
+- ~~IMA MCP 安装：`npm install -g @ima/mcp-server`~~ —— **2026-09-15 核实：npm 上不存在该包（404）**，此路已失效；要连 IMA 请直接用 `ima-skills`
 
 > 原文件完整内容已备份至 `D:\_trash_\2026-09-15\知识工具箱-references\IMA知识库.md`。

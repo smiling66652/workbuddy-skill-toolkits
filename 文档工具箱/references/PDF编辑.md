@@ -25,7 +25,10 @@ name: 二级：PDF编辑
 ### 安装
 
 ```bash
-pip install pdfkit-py
+# ⚠️ 2026-09-15 核实：PyPI 上不存在 pdfkit-py —— 那是 WorkBuddy 的**插件名**
+# （document-skills 插件，走 Skill 机制加载），不是 pip 包，pip install 会失败。
+# 若要纯 Python 方案，以下三个均已核实存在：
+pip install pikepdf pypdf PyMuPDF
 ```
 
 ### 基础编辑

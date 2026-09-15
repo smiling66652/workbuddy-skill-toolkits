@@ -121,7 +121,7 @@ auto_block_patterns:
 
 ## 注意事项
 
-1. **A.I.G可能不是真实存在的工具** — 如果`npm install -g @tencent-AIG/AIG-cli`失败，说明该工具不存在，需要提示用户
+1. **A.I.G 已确认不是真实存在的工具** — 2026-09-15 一手核实：npm registry 查 `@tencent-AIG/AIG-cli` 返回 **404**，该包不存在。文档原先的「如果失败就提示用户」判断已被证实。**不要执行这条安装命令**，Skill 安全审计请走插件 `skills安全审计`（skills-sec-audit）
 2. **第三方Skill来源复杂** — 优先从官方渠道或可信来源安装
 3. **定期重新审查** — Skill更新后需要重新审查
 4. **结合云鼎实验室** — 对WorkBuddy Skill，优先使用云鼎实验室审查
