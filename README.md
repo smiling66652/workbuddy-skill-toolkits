@@ -1,4 +1,9 @@
-# WorkBuddy 技能库（workbuddy-skill-toolkits）
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
+    <img src="assets/banner.svg" alt="WorkBuddy 技能库 — 19 个可独立取用的 AI Agent 技能" width="100%">
+  </picture>
+</p>
 
 > 本仓库是 WorkBuddy AI 助手的**技能库（skill suite）**：把一组相互独立、可单独取用的技能（Skill）集中管理，便于复制、归档与索引。
 > 当前收录 **19 个技能**，覆盖联网、文档、开发、知识、学术研究、小程序、安全、AI、工程方法论、项目专用等场景。
@@ -17,6 +22,13 @@
 ## 快速导航
 
 技能分五类。**先看「触发场景」判断该用哪个**——`description` 里的触发词是模型路由的唯一依据，正文关键词模型看不到。
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/diagram-dark.svg">
+    <img src="assets/diagram.svg" alt="技能库分类结构：五类共 19 个技能" width="100%">
+  </picture>
+</p>
 
 | 类别 | 技能 | 一句话用途 | 跳转 |
 |------|------|-----------|------|
