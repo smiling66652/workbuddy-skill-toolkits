@@ -1,0 +1,11 @@
+{
+  "name": "Word 文档创作与美化",
+  "installedAt": 1793256258278,
+  "source": "marketplace",
+  "version": "1.0.1",
+  "skillId": "skill_2115409233089269760",
+  "pay_mode": 0,
+  "description_zh": "专业 Word 文档（.docx）创作与美化助手。当用户需要生成研报、论文、公文、合同、报告、方案等垂类专业 Word 文档，或对已有 .docx 进行排版美化、统一风格时调用。提供从结构规划、内容撰写到版式美化（标题层级、封面、目录、表格、正文样式、中文字体、页码页眉）的全流程方法，并附带可直接调用的 python-docx 生成脚本（scripts/make_docx.py）与样式规范（assets/style-guide.md）、封面模板（assets/cover-template.md）。",
+  "description_en": "Professional Word document (.docx) authoring and beautification assistant. Use when the user needs to create specialized Word documents such as research reports, academic papers, official documents, contracts, or proposals, or to restyle/beautify an existing .docx. Provides an end-to-end methodology plus a runnable python-docx generator and style assets.",
+  "iconSource": "letter:auto"
+}

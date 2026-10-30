@@ -1,0 +1,430 @@
+<!-- 完整落地页模板 — 组合导航栏、Hero、特性展示、卡片网格、CTA、页脚 -->
+<!-- 自包含的完整 HTML 页面，可直接在浏览器中打开 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YourBrand — 让工作更简单</title>
+<style>
+  /* ===== CSS Variables ===== */
+  :root {
+    --color-primary: #2563eb;
+    --color-primary-dark: #1d4ed8;
+    --color-primary-light: #3b82f6;
+    --color-bg: #ffffff;
+    --color-bg-secondary: #f8fafc;
+    --color-bg-tertiary: #f1f5f9;
+    --color-text: #0f172a;
+    --color-text-secondary: #475569;
+    --color-text-muted: #94a3b8;
+    --color-border: #e2e8f0;
+    --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC",
+      "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-full: 9999px;
+  }
+
+  /* ===== Reset ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background: var(--color-bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  /* ===== Utility ===== */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+  .container-narrow { max-width: 800px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* ===== Button ===== */
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.5rem; border-radius: var(--radius-md);
+    font-size: 0.938rem; font-weight: 600; cursor: pointer;
+    transition: all 0.2s ease; border: none; text-decoration: none;
+    font-family: var(--font-sans);
+  }
+  .btn-primary { background: var(--color-primary); color: #fff; }
+  .btn-primary:hover { background: var(--color-primary-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
+  .btn-outline { background: transparent; color: var(--color-primary); border: 2px solid var(--color-primary); }
+  .btn-outline:hover { background: var(--color-primary); color: #fff; }
+  .btn-lg { padding: 1rem 2rem; font-size: 1.0625rem; }
+
+  /* ===== Section Header ===== */
+  .section-header { text-align: center; margin-bottom: 4rem; }
+  .section-tag {
+    display: inline-block; padding: 0.25rem 0.75rem;
+    background: rgba(37, 99, 235, 0.1); color: var(--color-primary);
+    border-radius: var(--radius-full); font-size: 0.875rem; font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .section-header h2 {
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 800; color: var(--color-text); margin-bottom: 1rem;
+  }
+  .section-header p {
+    font-size: 1.125rem; color: var(--color-text-secondary);
+    max-width: 600px; margin: 0 auto; line-height: 1.7;
+  }
+
+  /* ===== Navbar ===== */
+  .navbar {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 1.5rem;
+  }
+  .nav-logo { font-size: 1.25rem; font-weight: 700; color: var(--color-text); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: var(--color-text-secondary); font-weight: 500; font-size: 0.938rem; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--color-primary); }
+  .nav-cta { padding: 0.5rem 1.25rem; background: var(--color-primary); color: #fff; border-radius: var(--radius-md); font-weight: 600; font-size: 0.875rem; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--color-primary-dark); }
+  .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+  .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--color-text); margin: 5px 0; transition: 0.3s; }
+
+  /* ===== Hero ===== */
+  .hero {
+    min-height: 85vh; display: flex; align-items: center; text-align: center;
+    padding: 4rem 1.5rem 6rem;
+    background: linear-gradient(180deg, #eff6ff 0%, #f8fafc 100%);
+  }
+  .hero-content { max-width: 720px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block; padding: 0.3rem 0.875rem;
+    background: rgba(37, 99, 235, 0.1); color: var(--color-primary);
+    border-radius: var(--radius-full); font-size: 0.875rem; font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 800; line-height: 1.15; margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 span { color: var(--color-primary); }
+  .hero p {
+    font-size: 1.125rem; color: var(--color-text-secondary);
+    line-height: 1.75; margin: 0 auto 2.5rem; max-width: 520px;
+  }
+  .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .hero-visual {
+    margin-top: 4rem; border-radius: var(--radius-lg);
+    overflow: hidden; box-shadow: var(--shadow-xl);
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    padding: 0.25rem;
+  }
+  .hero-visual-inner {
+    background: #fff; border-radius: calc(var(--radius-lg) - 0.25rem);
+    padding: 2rem 1rem 1rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-visual-inner img { border-radius: 0.5rem; }
+
+  /* ===== Features Section ===== */
+  .features { padding: 6rem 0; background: var(--color-bg); }
+  .feature-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    padding: 3rem 0;
+  }
+  .feature-tag {
+    display: inline-block; padding: 0.25rem 0.75rem;
+    background: rgba(37, 99, 235, 0.1); color: var(--color-primary);
+    border-radius: var(--radius-full); font-size: 0.875rem; font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .feature-text h3 { font-size: 1.75rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.3; }
+  .feature-text p { font-size: 1.0625rem; color: var(--color-text-secondary); line-height: 1.75; margin-bottom: 1.5rem; }
+  .feature-list { list-style: none; margin-bottom: 1.5rem; }
+  .feature-list li {
+    padding: 0.5rem 0; color: var(--color-text-secondary);
+    display: flex; align-items: center; gap: 0.75rem; font-size: 0.938rem;
+  }
+  .feature-list li::before { content: "✓"; color: var(--color-primary); font-weight: 700; flex-shrink: 0; }
+  .feature-visual {
+    background: linear-gradient(135deg, #eff6ff 0%, #eef2ff 100%);
+    border-radius: var(--radius-lg);
+    display: flex; align-items: center; justify-content: center;
+    min-height: 360px; overflow: hidden;
+  }
+  .divider { border: none; border-top: 1px solid var(--color-border); margin: 0; }
+
+  /* ===== Cards Section ===== */
+  .cards-section { padding: 6rem 0; background: var(--color-bg-secondary); }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  .card {
+    background: var(--color-bg); border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl); padding: 2rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .card:hover { box-shadow: var(--shadow-xl); transform: translateY(-4px); }
+  .card-icon {
+    width: 48px; height: 48px; background: rgba(37, 99, 235, 0.1);
+    border-radius: var(--radius-md); display: flex; align-items: center;
+    justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem;
+  }
+  .card h3 { font-size: 1.125rem; font-weight: 700; margin-bottom: 0.75rem; }
+  .card p { font-size: 0.938rem; color: var(--color-text-secondary); line-height: 1.7; }
+
+  /* ===== CTA Section ===== */
+  .cta {
+    padding: 6rem 1.5rem; text-align: center;
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  }
+  .cta-inner { max-width: 640px; margin: 0 auto; }
+  .cta h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800; color: #fff; margin-bottom: 1rem; line-height: 1.25;
+  }
+  .cta p { font-size: 1.125rem; color: rgba(255,255,255,0.85); line-height: 1.75; margin-bottom: 2rem; }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-white {
+    padding: 0.875rem 2rem; background: #fff; color: var(--color-primary);
+    border-radius: var(--radius-md); font-size: 1rem; font-weight: 600;
+    text-decoration: none; transition: all 0.2s ease;
+  }
+  .btn-white:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+  .btn-outline-white {
+    padding: 0.875rem 2rem; background: transparent; color: #fff;
+    border: 2px solid rgba(255,255,255,0.5); border-radius: var(--radius-md);
+    font-size: 1rem; font-weight: 600; text-decoration: none; transition: all 0.2s ease;
+  }
+  .btn-outline-white:hover { border-color: #fff; }
+
+  /* ===== Footer ===== */
+  .footer {
+    background: #0f172a; color: #cbd5e1; padding: 4rem 1.5rem 2rem;
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem;
+  }
+  .footer-brand h3 { color: #fff; font-size: 1.25rem; margin-bottom: 1rem; }
+  .footer-brand p { font-size: 0.875rem; line-height: 1.7; max-width: 280px; }
+  .footer-col h4 {
+    color: #fff; font-size: 0.8125rem; font-weight: 600;
+    margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 0.625rem; }
+  .footer-col a { color: #94a3b8; font-size: 0.875rem; transition: color 0.2s; }
+  .footer-col a:hover { color: #fff; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem; font-size: 0.8125rem; color: #64748b;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .menu-toggle { display: block; }
+    .nav-links.mobile-open {
+      display: flex; flex-direction: column; gap: 1rem;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: #fff; padding: 1.5rem; border-bottom: 1px solid var(--color-border);
+    }
+    .feature-row { grid-template-columns: 1fr; gap: 2rem; }
+    .feature-visual { min-height: 240px; }
+    .hero-visual { margin-top: 2.5rem; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">YourBrand</a>
+      <ul class="nav-links" id="navMenu">
+        <li><a href="#features">功能</a></li>
+        <li><a href="#services">服务</a></li>
+        <li><a href="#pricing">定价</a></li>
+        <li><a href="#about">关于</a></li>
+      </ul>
+      <a href="#cta" class="nav-cta">开始使用</a>
+      <button class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('mobile-open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">🚀 全新 2.0 版本发布</div>
+      <h1>让<span>产品</span>更简单<br>让团队更高效</h1>
+      <p>一站式解决方案，帮助您的团队专注于真正重要的事情。无需复杂配置，开箱即用。</p>
+      <div class="hero-buttons">
+        <a href="#cta" class="btn btn-primary btn-lg">免费开始使用 →</a>
+        <a href="#features" class="btn btn-outline btn-lg">了解更多</a>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-visual-inner">
+          <img src="https://placehold.co/800x420/e2e8f0/64748b?text=Dashboard+Preview" alt="产品界面预览">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="container">
+      <!-- Feature 1 -->
+      <div class="feature-row">
+        <div class="feature-visual">
+          <img src="https://placehold.co/600x400/e2e8f0/64748b?text=Feature+1" alt="功能展示">
+        </div>
+        <div class="feature-text">
+          <div class="feature-tag">核心优势</div>
+          <h3>智能自动化工作流</h3>
+          <p>通过可视化拖拽，轻松构建自动化流程。减少重复操作，让团队专注于高价值工作。</p>
+          <ul class="feature-list">
+            <li>可视化流程编辑器，零代码上手</li>
+            <li>100+ 预置自动化模板</li>
+            <li>实时监控与异常告警</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="divider">
+      <!-- Feature 2 (reverse) -->
+      <div class="feature-row" style="direction: rtl;">
+        <div class="feature-visual">
+          <img src="https://placehold.co/600x400/e2e8f0/64748b?text=Feature+2" alt="功能展示">
+        </div>
+        <div class="feature-text" style="direction: ltr;">
+          <div class="feature-tag">深度洞察</div>
+          <h3>实时数据仪表盘</h3>
+          <p>自定义数据看板，多维度追踪关键指标。数据驱动决策，让每一步都有据可依。</p>
+          <ul class="feature-list">
+            <li>拖拽式看板搭建，自由组合图表</li>
+            <li>实时数据更新，秒级刷新</li>
+            <li>一键导出报告，多格式支持</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services / Cards -->
+  <section class="cards-section" id="services">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">产品服务</div>
+        <h2>一切您需要的功能</h2>
+        <p>我们提供完整的工具套件，帮助您更高效地完成工作。</p>
+      </div>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3>极速响应</h3>
+          <p>毫秒级响应速度，让用户获得流畅无缝的使用体验，降低跳出率。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔒</div>
+          <h3>安全可靠</h3>
+          <p>企业级安全防护，数据加密传输与存储，通过多项国际安全认证。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📊</div>
+          <h3>数据分析</h3>
+          <p>实时数据看板，多维度分析用户行为，为决策提供有力支撑。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔌</div>
+          <h3>开放集成</h3>
+          <p>丰富的API接口，轻松对接现有系统，打造无缝工作流。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🌐</div>
+          <h3>多端适配</h3>
+          <p>响应式设计，完美适配桌面、平板和移动端，随时随地访问。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">💬</div>
+          <h3>专属支持</h3>
+          <p>7×24小时在线客服支持，专业技术团队为您答疑解惑。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="cta">
+    <div class="cta-inner">
+      <h2>准备好开始了吗？</h2>
+      <p>加入 10,000+ 团队，用更智能的方式工作。免费试用 14 天，无需信用卡。</p>
+      <div class="cta-buttons">
+        <a href="#" class="btn-white">免费开始使用 →</a>
+        <a href="#" class="btn-outline-white">预约演示</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>YourBrand</h3>
+          <p>让工作更简单，让团队更高效。我们致力于为全球团队提供一流的协作工具。</p>
+        </div>
+        <div class="footer-col">
+          <h4>产品</h4>
+          <ul>
+            <li><a href="#">功能概览</a></li>
+            <li><a href="#">定价方案</a></li>
+            <li><a href="#">更新日志</a></li>
+            <li><a href="#">API 文档</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>公司</h4>
+          <ul>
+            <li><a href="#">关于我们</a></li>
+            <li><a href="#">加入团队</a></li>
+            <li><a href="#">新闻动态</a></li>
+            <li><a href="#">联系我们</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>支持</h4>
+          <ul>
+            <li><a href="#">帮助中心</a></li>
+            <li><a href="#">社区论坛</a></li>
+            <li><a href="#">隐私政策</a></li>
+            <li><a href="#">服务条款</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 YourBrand. All rights reserved.</span>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

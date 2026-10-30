@@ -1,12 +1,12 @@
 # WorkBuddy 技能库
 
-> 本仓库是 WorkBuddy 的**技能库**：一组相互独立、可单独取用的技能（Skill）集中管理。当前收录 **19 个技能**，覆盖联网、文档、开发、知识、学术研究、小程序、安全、AI、工程方法论、项目专用等场景。
+> 本仓库是 WorkBuddy 的**技能库**：一组相互独立、可单独取用的技能（Skill）集中管理。当前收录 **61 个技能**，覆盖联网、文档、开发、知识、学术研究、小程序、安全、AI、工程方法论、项目专用，以及设计/前端/UI、视频/多媒体/语音、办公/文档、微信/内容运营、写作/内容质量等场景。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Skills: 19](https://img.shields.io/badge/Skills-19-blue.svg)](INDEX.md)
+[![Skills: 61](https://img.shields.io/badge/Skills-61-blue.svg)](INDEX.md)
 [![Index](https://img.shields.io/badge/Index-INDEX.md-purple.svg)](INDEX.md)
 
-> 技能清单唯一权威来源是根目录 `INDEX.md`。本 README 只描述仓库里真实存在的 19 个目录；`INDEX.md` 表头写「21 个」并含 2 个本仓库不存在的条目，以实际目录为准。
+> 技能清单唯一权威来源是根目录 `INDEX.md`。本仓库共 **61 个目录**，完整清单（含版本/触发词/用途）一律以 `INDEX.md` 为准；`INDEX.md` 表头即「61 个」。`goodnight-letter`、`ima-skills`、`group-intel`、`napcat-ops` 等本机有、本仓库不收的技能不计入。
 
 ## 技能分组
 
@@ -38,6 +38,18 @@
 **项目专用**
 - `hfut-inspector` (5.0.0) 合工大信息巡检
 - `yuketang-harvester` (1.0.0) 长江雨课堂课件归档
+
+### 新增技能（42 个，2026-10-30 整合入库）
+
+> 以下为本次新增、未在上方逐行展开的技能，完整版本 / 触发词 / 用途见 `INDEX.md`。
+
+- **设计 / 前端 / UI（11）**：`accessibility-audit`、`design-review`、`design-router`、`frontend-design-guidelines`、`frontend-dev`、`responsive-design`、`tastemaker`、`typography`、`ui-design`、`web-design-guidelines`、`web-design-layout`
+- **视频 / 多媒体 / 语音（9）**：`ai-explainer-video`、`ai-short-video-maker`、`ai-video-short`、`edge-tts-read`、`fuheshun-auto-clip`、`local-video-pipeline`、`sherpa-onnx-tts`、`short-video-script-to-finished-video`、`video-script`
+- **办公 / 文档（6）**：`kdocs`、`markitdown-skill`、`pdf`、`pptx`、`word-toolkit`、`xlsx`
+- **微信 / 内容运营（3）**：`wechat-article-pro`、`wechat-article-search`、`qq-email`
+- **开发 / 工程 / Agent（6）**：`agent-browser-core`、`browser-use`、`fullstack-dev`、`github`、`self-improving-agent`、`web-access`
+- **写作 / 内容质量（2）**：`antislop`、`humanizer`
+- **元技能 / 方法论（5）**：`cangjie-skill`、`delivery-no-pseudoblock`、`grilling`、`skill-creator`、`技能包跨机器打包`
 
 > 每个技能的完整触发词、用途见 `INDEX.md` 与各技能自己的 `SKILL.md`。`description` 里的触发词是模型路由的唯一依据。
 

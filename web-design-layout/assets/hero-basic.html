@@ -1,0 +1,85 @@
+<!-- Hero 区模板 — 首屏主视觉区域，包含标题、副标题、CTA 按钮 -->
+<style>
+  :root {
+    --color-primary: #2563eb;
+    --color-primary-dark: #1d4ed8;
+    --color-bg: #ffffff;
+    --color-text: #0f172a;
+    --color-text-secondary: #475569;
+    --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  }
+  .hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 1.5rem;
+    background: linear-gradient(135deg, #eff6ff 0%, #eef2ff 50%, #faf5ff 100%);
+    font-family: var(--font-sans);
+  }
+  .hero-content { max-width: 720px; }
+  .hero-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--color-primary);
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--color-text);
+    margin: 0 0 1.5rem;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 span { color: var(--color-primary); }
+  .hero p {
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: var(--color-text-secondary);
+    margin: 0 auto 2.5rem;
+    max-width: 540px;
+  }
+  .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary, .btn-outline {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+  .btn-primary { background: var(--color-primary); color: #fff; border: none; }
+  .btn-primary:hover { background: var(--color-primary-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); }
+  .btn-outline { background: transparent; color: var(--color-primary); border: 2px solid var(--color-primary); }
+  .btn-outline:hover { background: var(--color-primary); color: #fff; }
+  .hero-visual {
+    margin-top: 4rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-visual img { width: 100%; border-radius: 0.75rem; box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+</style>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🚀 全新上线</div>
+    <h1>让<span>产品</span>更简单<br>让团队更高效</h1>
+    <p>一站式解决方案，帮助您的团队专注于真正重要的事情。无需复杂配置，开箱即用。</p>
+    <div class="hero-buttons">
+      <a href="#" class="btn-primary">免费开始使用 →</a>
+      <a href="#" class="btn-outline">了解更多</a>
+    </div>
+    <div class="hero-visual">
+      <img src="https://placehold.co/800x450/e2e8f0/64748b?text=Product+Screenshot" alt="产品截图">
+    </div>
+  </div>
+</section>

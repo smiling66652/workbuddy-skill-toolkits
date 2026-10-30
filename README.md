@@ -1,20 +1,20 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
-    <img src="assets/banner.svg" alt="WorkBuddy 技能库 — 19 个可独立取用的 AI Agent 技能" width="100%">
+    <img src="assets/banner.svg" alt="WorkBuddy 技能库 — 61 个可独立取用的 AI Agent 技能" width="100%">
   </picture>
 </p>
 
 > 本仓库是 WorkBuddy AI 助手的**技能库（skill suite）**：把一组相互独立、可单独取用的技能（Skill）集中管理，便于复制、归档与索引。
-> 当前收录 **19 个技能**，覆盖联网、文档、开发、知识、学术研究、小程序、安全、AI、工程方法论、项目专用等场景。
+> 当前收录 **61 个技能**，覆盖联网、文档、开发、知识、学术研究、小程序、安全、AI、工程方法论、项目专用，以及设计/前端/UI、视频/多媒体/语音、办公/文档、微信/内容运营、写作/内容质量等场景。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Skills: 19](https://img.shields.io/badge/Skills-19-blue.svg)](INDEX.md)
+[![Skills: 61](https://img.shields.io/badge/Skills-61-blue.svg)](INDEX.md)
 [![Index](https://img.shields.io/badge/Index-INDEX.md-purple.svg)](INDEX.md)
 
-> **关于技能数**：本仓库 `git` 跟踪的技能目录共 **19** 个（见下文「项目结构」）。
-> 本机 skills 目录另有 `goodnight-letter`（私人项目）与 `ima-skills`（供应商技能，许可不允许转分发）两个技能
-> **有意未收入本仓库**，因此仓库根目录的 `INDEX.md` 由 `skill-doctor.py` 以 `--exclude` 生成，表头即「19 个」并与实际目录一致。
+> **关于技能数**：本仓库 `git` 跟踪的技能目录共 **61** 个（见下文「项目结构」与根目录 `INDEX.md`）。
+> 本机 skills 目录另有 `goodnight-letter`（私人项目）、`ima-skills`（供应商技能，许可不允许转分发）、`group-intel` 与 `napcat-ops`（私有运维类）等技能
+> **有意未收入本仓库**，因此仓库根目录的 `INDEX.md` 由 `skill-doctor.py` 以 `--exclude` 生成，表头即「61 个」并与实际目录一致。
 > 生成命令见「技能索引」一节。
 
 ---
@@ -26,7 +26,7 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/diagram-dark.svg">
-    <img src="assets/diagram.svg" alt="技能库分类结构：五类共 19 个技能" width="100%">
+    <img src="assets/diagram.svg" alt="技能库分类结构：九类共 61 个技能" width="100%">
   </picture>
 </p>
 
@@ -95,6 +95,8 @@ Plan C（兜底方案）
 ## 技能总览
 
 > 下表「版本」取自各技能 `SKILL.md` 的 `version` 字段；「触发场景」取自 `description` 的触发词；「用途边界」取自 `description` 首段。完整描述以各技能自己的 `SKILL.md` 为准。
+>
+> 本仓库共 **61** 个技能：下方先列首批 19 个的逐行说明，再附 42 个新增技能的分类索引；完整清单（含版本 / 触发词 / 用途）一律以 `INDEX.md` 为准。
 
 ### 常驻规程
 
@@ -141,6 +143,18 @@ Plan C（兜底方案）
 |------|------|----------|----------|
 | `hfut-inspector` | 5.0.0 | 合工大（HFUT）信息巡检统一系统：官网栏目扫描 + QQ群/空间/公众号采集 + AI 三层分析 + 邮件推送 + 知识库检索 | 合工大、HFUT、官网巡检、通知扫描、竞赛信息、保研通知、夏令营、讲座、教务通知、日报 |
 | `yuketang-harvester` | 1.0.0 | 批量归档长江雨课堂课件：课表枚举、课件文字层提取、页图批量下载、讲义装配 | 雨课堂、长江雨课堂、下载课件、课程归档、讲义整理、复习资料、课件转 PDF |
+
+### 新增技能（42 个，2026-10-30 整合入库）
+
+> 以下为本次新增、未在上方逐行展开的技能，完整版本 / 触发词 / 用途见 `INDEX.md`。
+
+- **设计 / 前端 / UI（11）**：`accessibility-audit`、`design-review`、`design-router`、`frontend-design-guidelines`、`frontend-dev`、`responsive-design`、`tastemaker`、`typography`、`ui-design`、`web-design-guidelines`、`web-design-layout`
+- **视频 / 多媒体 / 语音（9）**：`ai-explainer-video`、`ai-short-video-maker`、`ai-video-short`、`edge-tts-read`、`fuheshun-auto-clip`、`local-video-pipeline`、`sherpa-onnx-tts`、`short-video-script-to-finished-video`、`video-script`
+- **办公 / 文档（6）**：`kdocs`、`markitdown-skill`、`pdf`、`pptx`、`word-toolkit`、`xlsx`
+- **微信 / 内容运营（3）**：`wechat-article-pro`、`wechat-article-search`、`qq-email`
+- **开发 / 工程 / Agent（6）**：`agent-browser-core`、`browser-use`、`fullstack-dev`、`github`、`self-improving-agent`、`web-access`
+- **写作 / 内容质量（2）**：`antislop`、`humanizer`
+- **元技能 / 方法论（5）**：`cangjie-skill`、`delivery-no-pseudoblock`、`grilling`、`skill-creator`、`技能包跨机器打包`
 
 ---
 
@@ -197,7 +211,7 @@ WorkBuddy 会按它的技能安装流程加载对应目录。
 
 ```text
 workbuddy-skill-toolkits/
-├── INDEX.md                 # 技能索引（唯一权威清单，由 skill-doctor.py 生成）
+├── INDEX.md                 # 技能索引（唯一权威清单，由 skill-doctor.py 生成，共 61 个技能包）
 ├── README.md                # 本文件（主文档）
 ├── README_zh.md             # 精简版说明
 ├── LICENSE                  # MIT
@@ -235,9 +249,9 @@ workbuddy-skill-toolkits/
 - 技能增删改后，重新生成：
 
 ```bash
-# 本仓库范围（19 个）：需排除两个「本机有、本仓库不收」的技能
+# 本仓库范围（61 个）：排除「本机有、本仓库不收」的技能
 python skill-doctor.py <本机skills目录> \
-  --exclude "goodnight-letter,ima-skills" \
+  --exclude "goodnight-letter,ima-skills,group-intel,napcat-ops" \
   --out INDEX.md --fix-index
 ```
 
@@ -256,6 +270,12 @@ python skill-doctor.py <本机skills目录> \
 - ✅ 校正 README：去掉虚构的工具清单（如安全审查工具箱的 sqlmap/nmap、联网工具箱的 Agent Browser/MiniMax CLI、AI 工具箱的 Ollama/DeepSeek 等），仅保留 SKILL.md 中确认存在的能力，并如实标注本机未装依赖
 - ✅ 补全「安装使用」「项目结构」「技能索引」章节；保留「三级层级结构」「多级退回机制」（改为「工具箱类技能采用」，不再绝对化到所有技能）
 - ✅ 清理 `docs/`：移走一次性检查报告、未完成攻略提纲、专家会话缓存（见 `docs/README.md`）
+
+### 2026-10-30 — 大规模整合入库
+
+- ✅ 技能从 **19 个**扩到 **61 个目录**，新增设计/前端/UI、视频/多媒体/语音、办公/文档、微信/内容运营、开发/工程/Agent、写作/内容质量、元技能等类别
+- ✅ `README.md` / `README_zh.md` 的「技能总览」补充 42 个新增技能的分类索引（完整清单见 `INDEX.md`）
+- ✅ 横幅与计数（badge、intro、结构图说明）同步更新为 61
 
 ### v1.0.0 (2026-06-02) — 初始版本
 

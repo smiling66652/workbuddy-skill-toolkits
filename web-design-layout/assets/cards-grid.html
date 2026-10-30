@@ -1,0 +1,108 @@
+<!-- 卡片网格模板 — 功能/服务/产品展示，响应式自适应网格 -->
+<style>
+  :root {
+    --color-primary: #2563eb;
+    --color-bg: #ffffff;
+    --color-bg-secondary: #f8fafc;
+    --color-text: #0f172a;
+    --color-text-secondary: #475569;
+    --color-border: #e2e8f0;
+    --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  }
+  .cards-section {
+    padding: 5rem 1.5rem;
+    background: var(--color-bg);
+    font-family: var(--font-sans);
+  }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-header { text-align: center; margin-bottom: 4rem; }
+  .section-tag {
+    display: inline-block; padding: 0.25rem 0.75rem;
+    background: rgba(37, 99, 235, 0.1); color: var(--color-primary);
+    border-radius: 9999px; font-size: 0.875rem; font-weight: 500; margin-bottom: 1rem;
+  }
+  .section-header h2 { font-size: 2.25rem; font-weight: 800; color: var(--color-text); margin: 0 0 1rem; }
+  .section-header p { font-size: 1.125rem; color: var(--color-text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  .card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 2rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .card:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.08); transform: translateY(-4px); }
+  .card-icon {
+    width: 48px; height: 48px;
+    background: rgba(37, 99, 235, 0.1);
+    border-radius: 0.75rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin-bottom: 1.5rem;
+  }
+  .card h3 { font-size: 1.25rem; font-weight: 700; color: var(--color-text); margin: 0 0 0.75rem; }
+  .card p { font-size: 0.938rem; color: var(--color-text-secondary); line-height: 1.7; margin: 0; }
+  .card-link {
+    display: inline-flex; align-items: center; gap: 0.25rem;
+    margin-top: 1.25rem; color: var(--color-primary); font-weight: 600;
+    font-size: 0.875rem; text-decoration: none;
+  }
+  .card-link:hover { text-decoration: underline; }
+</style>
+
+<section class="cards-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">核心功能</div>
+      <h2>一切您需要的功能</h2>
+      <p>我们提供完整的工具套件，帮助您更高效地完成工作。</p>
+    </div>
+    <div class="cards-grid">
+      <!-- Card 1 -->
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>极速响应</h3>
+        <p>毫秒级响应速度，让用户获得流畅无缝的使用体验，降低跳出率。</p>
+        <a href="#" class="card-link">了解更多 →</a>
+      </div>
+      <!-- Card 2 -->
+      <div class="card">
+        <div class="card-icon">🔒</div>
+        <h3>安全可靠</h3>
+        <p>企业级安全防护，数据加密传输与存储，通过多项国际安全认证。</p>
+        <a href="#" class="card-link">了解更多 →</a>
+      </div>
+      <!-- Card 3 -->
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>数据分析</h3>
+        <p>实时数据看板，多维度分析用户行为，为决策提供有力支撑。</p>
+        <a href="#" class="card-link">了解更多 →</a>
+      </div>
+      <!-- Card 4 -->
+      <div class="card">
+        <div class="card-icon">🔌</div>
+        <h3>开放集成</h3>
+        <p>丰富的API接口，轻松对接现有系统，打造无缝工作流。</p>
+        <a href="#" class="card-link">了解更多 →</a>
+      </div>
+      <!-- Card 5 -->
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <h3>多端适配</h3>
+        <p>响应式设计，完美适配桌面、平板和移动端，随时随地访问。</p>
+        <a href="#" class="card-link">了解更多 →</a>
+      </div>
+      <!-- Card 6 -->
+      <div class="card">
+        <div class="card-icon">💬</div>
+        <h3>专属支持</h3>
+        <p>7×24小时在线客服支持，专业技术团队为您答疑解惑。</p>
+        <a href="#" class="card-link">了解更多 →</a>
+      </div>
+    </div>
+  </div>
+</section>

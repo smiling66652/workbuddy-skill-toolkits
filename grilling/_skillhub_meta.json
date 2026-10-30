@@ -1,0 +1,11 @@
+{
+  "name": "严格拷问",
+  "installedAt": 1793256348932,
+  "source": "marketplace",
+  "version": "1.0.0",
+  "skillId": "skill_2095263945412698112",
+  "pay_mode": 0,
+  "description_zh": "严格追问并逐题压力测试方案。",
+  "description_en": "Stress-test a plan with one rigorous question at a time.",
+  "iconSource": "letter:auto"
+}

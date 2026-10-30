@@ -1,0 +1,11 @@
+{
+  "name": "设计路由",
+  "installedAt": 1793256264626,
+  "source": "marketplace",
+  "version": "1.0.0",
+  "skillId": "skill_2107784369941225472",
+  "pay_mode": 0,
+  "description_zh": "设计助手的派发器。当设计任务处于 Craft/设计模式、但还无法从界面信号判断具体交付物类型时使用。它先判定交付物属于哪个家族——可编辑的画布设计稿（Ardot）还是 AI 生成的图片/视频（Miora）——再指定要加载的领域技能。不适用于输出 PowerPoint .pptx 文件（那是 pptx 技能）。",
+  "description_en": "Dispatcher for WorkBuddy's Design assistant. Use this when a design task is in Craft/design mode but the specific deliverable type is not yet determined from UI signals. It first decides which family the deliverable belongs to — an editable canvas design (Ardot) or an AI-generated image/video (Miora) — then names the domain skill to load. Not for PowerPoint .pptx file output (pptx skill).",
+  "iconSource": "letter:auto"
+}

@@ -1,0 +1,98 @@
+<!-- 页脚模板 — 多列导航链接、品牌信息、版权声明 -->
+<style>
+  :root {
+    --color-primary: #2563eb;
+    --color-bg: #ffffff;
+    --color-text: #0f172a;
+    --color-text-secondary: #475569;
+    --color-text-muted: #94a3b8;
+    --color-border: #e2e8f0;
+    --font-sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  }
+  .footer {
+    background: #0f172a;
+    color: #cbd5e1;
+    padding: 4rem 1.5rem 2rem;
+    font-family: var(--font-sans);
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+  .footer-brand h3 { color: #fff; font-size: 1.25rem; margin: 0 0 1rem; }
+  .footer-brand p { font-size: 0.875rem; line-height: 1.7; margin: 0; max-width: 280px; }
+  .footer-col h4 { color: #fff; font-size: 0.875rem; font-weight: 600; margin: 0 0 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .footer-col ul { list-style: none; padding: 0; margin: 0; }
+  .footer-col li { margin-bottom: 0.625rem; }
+  .footer-col a { color: #94a3b8; text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+  .footer-col a:hover { color: #fff; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+    font-size: 0.8125rem; color: #64748b;
+  }
+  .footer-social { display: flex; gap: 1rem; }
+  .footer-social a {
+    width: 36px; height: 36px;
+    border-radius: 50%; background: rgba(255,255,255,0.06);
+    display: flex; align-items: center; justify-content: center;
+    color: #94a3b8; text-decoration: none; transition: all 0.2s;
+  }
+  .footer-social a:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+  @media (max-width: 768px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+</style>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>YourBrand</h3>
+        <p>让工作更简单，让团队更高效。我们致力于为全球团队提供一流的协作工具。</p>
+      </div>
+      <div class="footer-col">
+        <h4>产品</h4>
+        <ul>
+          <li><a href="#">功能概览</a></li>
+          <li><a href="#">定价方案</a></li>
+          <li><a href="#">更新日志</a></li>
+          <li><a href="#">API 文档</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>公司</h4>
+        <ul>
+          <li><a href="#">关于我们</a></li>
+          <li><a href="#">加入团队</a></li>
+          <li><a href="#">新闻动态</a></li>
+          <li><a href="#">联系我们</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>支持</h4>
+        <ul>
+          <li><a href="#">帮助中心</a></li>
+          <li><a href="#">社区论坛</a></li>
+          <li><a href="#">隐私政策</a></li>
+          <li><a href="#">服务条款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 YourBrand. All rights reserved.</span>
+      <div class="footer-social">
+        <a href="#" title="微信">微</a>
+        <a href="#" title="微博">博</a>
+        <a href="#" title="GitHub">G</a>
+      </div>
+    </div>
+  </div>
+</footer>
